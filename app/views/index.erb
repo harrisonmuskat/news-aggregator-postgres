@@ -1,0 +1,15 @@
+<!-- Put your News Aggregator articles.erb code here -->
+<h2>Where all the news is fit to print</h2>
+
+<ul>
+  <% @article_list.each {|article| %>
+    <li>
+      <ul>
+        <li>Title: <%= article["title"]%></li>
+        <li>Go: <a href = "<%= article["url"] %>" target="_blank"> <%= article["description"] %> </a></li>
+      </ul>
+    </li>
+  <% } %>
+</ul>
+
+<a href = '/articles/new'>Submit a New Article</a>

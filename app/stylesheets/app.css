@@ -1,0 +1,10 @@
+ul,li { list-style-type: none;
+        list-style-position:inside;
+        margin:0;
+        padding:0;
+        border-width: thin;
+        border-color: blue;}
+
+ul {
+  margin-bottom: 10px;
+}

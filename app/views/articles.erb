@@ -1,0 +1,12 @@
+<h2>News of the Day</h2>
+
+<ul>
+  <% @article_list.each {|article| %>
+    <li>
+      <ul>
+        <li>Title: <%= article[0]%></li>
+        <li>Go: <a href = "<%= article[1] %>" target="_blank"> <%= article[2] %> </a></li>
+      </ul>
+    </li>
+  <% } %>
+</ul>
