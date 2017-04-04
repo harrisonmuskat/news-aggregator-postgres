@@ -37,15 +37,6 @@ class Article
     false
   end
 
-  def db_connection
-    begin
-      connection = PG.connect(dbname: "news_aggregator_test")
-      yield(connection)
-    ensure
-      connection.close
-    end
-  end
-
   def valid?
     self.blank_attributes
     self.invalid_url
@@ -55,7 +46,7 @@ class Article
   end
 
   def blank_attributes
-    if @title == "" || @url == "" || @description == ""
+    if @title == "" || @url == "" || @description == "" || @title.nil? || @url.nil? || @description.nil?
       @errors << "Please completely fill out form"
     end
   end

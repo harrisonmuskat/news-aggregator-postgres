@@ -41,14 +41,20 @@ end
 
 post '/articles/new' do
   article_details = params.values
-  sql = "INSERT INTO articles (title, url, description) VALUES($1, $2, $3)"
-  db_connection do |conn|
-    conn.exec_params(
-      sql, [article_details[0], article_details[1], article_details[2]]
-    )
+  new_article = Article.new({
+    "title" => article_details[0],
+    "url" => article_details[1],
+    "description" => article_details[2]
+  })
+  if new_article.save
+    redirect '/articles'
+  else
+    @title = new_article.title
+    @url = new_article.url
+    @description = new_article.description
+    @errors = new_article.errors
+    erb :new
   end
-
-  redirect '/articles'
 end
 
 get '/articles' do

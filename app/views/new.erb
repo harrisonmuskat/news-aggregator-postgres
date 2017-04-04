@@ -2,12 +2,21 @@
 
 <h2>Submit a new article:</h2>
 <form action = "/articles/new" method = "post">
+  <% if !@errors.nil? %>
+    <ul>
+      <% @errors.each {|error|  %>
+        <li>
+          <%= error %>
+        </li>
+      <% } %>
+    </ul>
+  <% end %>
   <label for = "article_title">Article Title:</label>
-  <input type = "text" id = "article_title" name = "article_title">
+  <input type = "text" id = "article_title" name = "article_title" value= "<%= @title %>">
   <label for = "article_url">Article URL:</label>
-  <input type = "text" id = "article_url" name = "article_url">
+  <input type = "text" id = "article_url" name = "article_url" value= "<%= @url %>">
   <label for = "article_desc">Article Description:</label>
-  <input type = "text" id = "article_desc" name = "article_desc">
+  <input type = "text" id = "article_desc" name = "article_desc" value= "<%= @description %>">
 
   <input type = "submit" value = "Submit">
 </form>
